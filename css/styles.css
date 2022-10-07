@@ -1,17 +1,11 @@
-#qol_map {
-	left: 350px;
-	right: 350px;
-	width: 100%;
+.vis-container {
+	width: 100%
 }
-/*
-#qol_map {
-	margin: auto;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-	border: 1px solid lightgray;
-	padding: 10px;
-	align-items: center;
-	justify-content: center;
+
+.page {
+	width: 1024px;
+    margin: auto;
+    padding: 50px;
+    padding-top: 10px;
+    font-family: 'Trebuchet MS', sans-serif;
 }
-*/

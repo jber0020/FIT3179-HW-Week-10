@@ -1,9 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 1000,
+    "width": "container",
     "height": 550,
-    "title": "Quality of Life Index 2020",
     "projection": {"type": "equalEarth"},
+    "config": {"font": "Trebuchet MS"},
     "layer":[
       {
         "data": {
@@ -58,14 +58,77 @@
               "scale": {
                 "type": "linear",
                 "scheme": "greens"
-              }
+              },
+              "title": "Quality of Life Index"
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
               {"field": "QualityOfLifeIndex", "type": "quantitative", "title": "Quality of Life Index"}
             ]
           }
+        },
+        {
+          "transform": [
+            {
+              "window": [{"op": "rank", "as": "ranking"}],
+              "sort": [{"field": "QualityOfLifeIndex", "order": "descending"}]
+            },
+            {
+              "filter": "datum.ranking == 1"
+            },
+            {
+              "calculate": "'The country with the best; quality of life is: ' + datum['properties.NAME']",
+              "as": "text1_raw"
+            },
+            {
+              "calculate": "split(datum.text1_raw, ';')",
+              "as": "text1"
+            }
+          ],
+          
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": -8,
+            "dy": -8,
+            "baseline": "middle",
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "text1"}
+          }
+        },
+        {
+          "transform": [
+            {
+              "window": [{"op": "rank", "as": "ranking"}],
+              "sort": [{"field": "QualityOfLifeIndex", "order": "ascending"}]
+            },
+            {
+              "filter": "datum.ranking == 1"
+            },
+            {
+              "calculate": "'The country with the worst; quality of life is: ' + datum['properties.NAME']",
+              "as": "text2_raw"
+            },
+            {
+              "calculate": "split(datum.text2_raw, ';')",
+              "as": "text2"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": -8,
+            "dy": -8,
+            "baseline": "middle",
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "text2"}
+          }
         }
-      ]
+        
+    ]
       
     }

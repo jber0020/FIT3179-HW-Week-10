@@ -1,0 +1,158 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/jber0020/FIT3179-HW-Week-10/main/data/WHR20_DataForFigure2.1.csv"
+    },
+    "config": {"font": "Trebuchet MS"},
+    "params": [{"name": "region_select",
+                "bind": {
+                    "input": "select",
+                    "options": [
+                        null,
+                        "Western Europe",
+                        "North America and ANZ",
+                        "Middle East and North Africa",
+                        "Latin America and Caribbean",
+                        "Central and Eastern Europe",
+                        "East Asia",
+                        "Southeast Asia",
+                        "Commonwealth of Indepdendent States",
+                        "Sub-Saharan Africa",
+                        "South Asia"
+                    ],
+                    "labels": [
+                        "All",
+                        "Western Europe",
+                        "North America and ANZ",
+                        "Middle East and North Africa",
+                        "Latin America and Caribbean",
+                        "Central and Eastern Europe",
+                        "East Asia",
+                        "Southeast Asia",
+                        "Commonwealth of Indepdendent States",
+                        "Sub-Saharan Africa",
+                        "South Asia"
+                    ],
+                    "name": "Region Selection: "
+                }}],
+    "hconcat": [
+        {
+            "title": "Top 10 Countries",
+            "width": 364,
+            "height": 550,
+            "mark": {"type": "bar", "cornerRadius": 5},
+            "encoding": {
+                "x": {"field": "Ladder score", "type": "quantitative", "title": "Score"},
+                "y": {"field": "Country name", "type": "nominal", 
+                      "sort": {"field": "Ladder Score", "order": "descending"}, 
+                      "title": "Country"},
+                "tooltip": [
+                    {"field": "Country name", "title": "Country"},
+                    {"field": "Regional indicator", "title": "Region"},
+                    {"field": "Ladder score", "title": "Score"}
+                ],
+                "color": {
+                    "field": "Regional indicator",
+                    "type": "nominal",
+                    "title": "Region",
+                    "scale": {
+                    "domain": [
+                        "Western Europe",
+                        "North America and ANZ",
+                        "Middle East and North Africa",
+                        "Latin America and Caribbean",
+                        "Central and Eastern Europe",
+                        "East Asia",
+                        "Southeast Asia",
+                        "Commonwealth of Indepdendent States",
+                        "Sub-Saharan Africa",
+                        "South Asia"
+                    ],
+                    "range": [
+                        "#003f5c",
+                        "#750225",
+                        "#665191",
+                        "#a05195",
+                        "#d45087",
+                        "#f95d6a",
+                        "#ff7c43",
+                        "#ffa600",
+                        "#ac0068",
+                        "#127502"
+                    ]
+                }
+                }
+            },
+            "transform": [
+                {
+                    "window": [{
+                        "op": "rank",
+                        "as": "rank"
+                    }],
+                    "sort": [{"field": "Ladder score", "order": "descending"}]
+                }, {
+                    "filter": "datum.rank <= 10"
+                }
+            ]
+        },
+        {
+            "title": "Bottom 10 Countries",
+            "width": 364,
+            "height": 550,
+            "mark": {"type": "bar", "cornerRadius": 5},
+            "encoding": {
+                "x": {"field": "Ladder score", "type": "quantitative", "title": "Score", "scale": {"domainMax": 8}},
+                "y": {"field": "Country name", "type": "nominal", 
+                      "sort": {"field": "Ladder Score", "order": "descending"}, 
+                      "title": "Country"},
+                "tooltip": [
+                    {"field": "Country name", "title": "Country"},
+                    {"field": "Regional indicator", "title": "Region"},
+                    {"field": "Ladder score", "title": "Score"}
+                ],
+                "color": {
+                    "field": "Regional indicator",
+                    "type": "nominal",
+                    "title": "Region",
+                    "scale": {
+                    "domain": [
+                        "Western Europe",
+                        "North America and ANZ",
+                        "Middle East and North Africa",
+                        "Latin America and Caribbean",
+                        "Central and Eastern Europe",
+                        "East Asia",
+                        "Southeast Asia",
+                        "Commonwealth of Indepdendent States",
+                        "Sub-Saharan Africa",
+                        "South Asia"
+                    ],
+                    "range": [
+                        "#003f5c",
+                        "#750225",
+                        "#665191",
+                        "#a05195",
+                        "#d45087",
+                        "#f95d6a",
+                        "#ff7c43",
+                        "#ffa600",
+                        "#ac0068",
+                        "#127502"
+                    ]
+                }
+                }
+            },
+            "transform": [
+                {
+                    "window": [{
+                        "op": "rank",
+                        "as": "rank"
+                    }],
+                    "sort": [{"field": "Ladder score", "order": "ascending"}]
+                }, {
+                    "filter": "datum.rank <= 10"
+                }
+            ]
+        }
+    ]
+}

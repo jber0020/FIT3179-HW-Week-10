@@ -8,12 +8,12 @@
         <!--CSS-->
         <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
-        <title>Quality of Life Index</title>
+        <title>Happiness & Quality of Life</title>
     </head>
-    <body>
-        <h1 style="text-align: center;">Quality of Life Index</h1>
-
-        <div id="qol_map"></div>
+    <body class="main">
+        <div class="page">
+        <h1 style="text-align: center;">Quality Of Life Index 2020</h1>
+        <div id="qol_map" class="vis-container"></div>
 
         <script type="text/javascript">
             var spec2 = "js/qol_map.vg.json";
@@ -21,5 +21,17 @@
 
             }).catch(console.error)
         </script>
+
+        <h1 style="text-align: center;">World Happiness Report 2020</h1>
+
+        <div id="happiness" class="vis-container"></div>
+
+        <script type="text/javascript">
+            var spec2 = "js/happiness.vg.json";
+            vegaEmbed('#happiness', spec2).then(function(result) {
+
+            }).catch(console.error)
+        </script>
+        
     </body>
 </html>
