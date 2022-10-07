@@ -6,10 +6,11 @@
     "projection": {"type": "equalEarth"},
     "background": "aliceblue",
     "data": {
-        "url": "https://raw.githubusercontent.com/jber0020/QOLIndex/main/data/ne_110m.topojson",
+        "url": "https://raw.githubusercontent.com/jber0020/FIT3179-HW-Week-10/tree/main/data/ne_110m.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
     "layer":[
+      
       {
         "transform": [
           {"calculate": "'Data is not available in ' + datum.properties.NAME", "as": "note"}
@@ -27,7 +28,7 @@
               "lookup": "properties.NAME",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/jber0020/QOLIndex/main/data/countries_quality_of_life_index.18-10-2021.csv"
+                  "url": "https://raw.githubusercontent.com/jber0020/FIT3179-HW-Week-10/tree/main/data/countries_quality_of_life_index.18-10-2021.csv"
                 },
                 "key": "Country",
                 "fields": ["QualityOfLifeIndex"]
