@@ -7,17 +7,16 @@
     "layer":[
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/jber0020/FIT3179-HW-Week-10/main/data/ne_110m_ocean.topojson",
-          "format": {"type": "topojson", "feature": "ne_110m_ocean"}
+          "sphere": true
         },
-        "mark": {"type": "geoshape", "fill":"skyblue"}
+        "mark": {"type": "geoshape", "fill":"lightblue"}
       },
       {
         "data": {
           "url": "https://raw.githubusercontent.com/jber0020/FIT3179-HW-Week-10/main/data/ne_110m.topojson",
           "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
         },
-        "mark": {"type": "geoshape", "fill":null, "stroke":"lightgray"}
+        "mark": {"type": "geoshape", "fill":null, "stroke":"gray"}
       },
       {
         "data": {
