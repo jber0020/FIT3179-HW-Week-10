@@ -4,6 +4,9 @@
     "height": 550,
     "projection": {"type": "equalEarth"},
     "config": {"font": "Trebuchet MS"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/jber0020/FIT3179-HW-Week-10/main/data/countries_quality_of_life_index.18-10-2021.csv"
+    },
     "layer":[
       {
         "data": {
@@ -59,7 +62,8 @@
                 "type": "linear",
                 "scheme": "greens"
               },
-              "title": "Quality of Life Index"
+              "title": "Quality of Life Index",
+              "legend": {"orient": "bottom", "cornerRadius": 10, "gradientLength": 400}
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
@@ -77,7 +81,7 @@
               "filter": "datum.ranking == 1"
             },
             {
-              "calculate": "'The country with the best; quality of life is: ' + datum['properties.NAME']",
+              "calculate": "'The country with; the best quality; of life is:;Switzerland'",
               "as": "text1_raw"
             },
             {
@@ -88,11 +92,11 @@
           
           "mark": {
             "type": "text",
-            "align": "left",
-            "dx": -8,
-            "dy": -8,
+            "align": "center",
+            "dx": -70,
+            "dy": -130,
             "baseline": "middle",
-            "fontStyle": "italic"
+            "fontStyle": "bold"
           },
           "encoding": {
             "text": {"field": "text1"}
@@ -108,7 +112,7 @@
               "filter": "datum.ranking == 1"
             },
             {
-              "calculate": "'The country with the worst; quality of life is: ' + datum['properties.NAME']",
+              "calculate": "'The country with; the worst quality; of life is:;Ghana'",
               "as": "text2_raw"
             },
             {
@@ -118,17 +122,17 @@
           ],
           "mark": {
             "type": "text",
-            "align": "left",
-            "dx": -8,
-            "dy": -8,
+            "align": "center",
+            "dx": -30,
+            "dy": 0,
             "baseline": "middle",
-            "fontStyle": "italic"
+            "fontStyle": "bold"
           },
           "encoding": {
             "text": {"field": "text2"}
           }
         }
-        
+         
     ]
       
     }
